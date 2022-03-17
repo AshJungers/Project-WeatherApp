@@ -1,0 +1,136 @@
+header {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+h6 {
+  font-family: "Poppins", sans-serif;
+  font-size: smaller;
+}
+
+h5 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: larger;
+}
+
+footer {
+  font-family: "Poppins", sans-serif;
+  margin-top: 50px;
+  text-align: center;
+}
+.mb-3 {
+  font-family: "Poppins", sans-serif;
+}
+
+#btn {
+  background-color: #f7ecde;
+  color: black;
+}
+
+#btn:hover {
+  background-color: #e9dac1;
+  color: #000;
+}
+#current-location-button {
+  background-color: #c3b091;
+  margin-left: 15px;
+}
+
+#current-location-button:hover {
+  background-color: #e9dac1;
+}
+
+div.row {
+  text-align: center;
+}
+div.first-row {
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+div.box-1 {
+  text-align: right;
+  padding-right: 100px;
+}
+div.box-2 {
+  text-align: left;
+  padding-left: 100px;
+}
+.input-group {
+  margin: 0 auto;
+  width: 45%;
+}
+
+#currentDate {
+  font-family: "Poppins", sans-serif;
+  font-size: smaller;
+  text-align: center;
+}
+
+#currentCity {
+  font-family: "Noto Serif Display", serif;
+  font-size: 50px;
+}
+#description {
+  text-transform: capitalize;
+}
+.current-temp {
+  display: inline;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 70px;
+}
+.units {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: small;
+}
+
+.weather-pic {
+  width: 90px;
+}
+
+.future {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: larger;
+}
+
+.snow-icon {
+  width: 45%;
+}
+
+.cloudy-icon {
+  width: 30%;
+}
+
+.sun-icon {
+  width: 30%;
+}
+
+.card {
+  border-style: none;
+}
+.card-body {
+  background-color: #f7ecde;
+  border-radius: 30px;
+}
+
+.card-body:hover {
+  background-color: #e9dac1;
+}
+.card-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.card-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  padding-top: 20px;
+}
