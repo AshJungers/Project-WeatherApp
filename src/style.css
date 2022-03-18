@@ -101,6 +101,8 @@ div.box-2 {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: small;
+  position: relative;
+  top: -37px;
 }
 
 .weather-pic {
