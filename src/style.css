@@ -18,6 +18,11 @@ p {
   font-size: larger;
 }
 
+#temperature {
+  display: inline;
+  font-size: 70px;
+}
+
 #footer {
   font-family: "Poppins", sans-serif;
   margin-top: 50px;
