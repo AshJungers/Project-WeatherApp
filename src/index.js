@@ -1,4 +1,4 @@
-//Feature One
+//Date & Time
 let now = new Date();
 
 let currentDate = document.querySelector("#currentDate");
@@ -43,7 +43,7 @@ let month = months[now.getMonth()];
 
 currentDate.innerHTML = `${day}, ${month} ${date}, ${year} ${hour}:${minutes}`;
 
-//Feature Two
+//Weather Search / API Integration
 function displayWeather(response) {
   document.querySelector("#currentCity").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
@@ -93,7 +93,8 @@ document
   .addEventListener("click", getCurrentLocation);
 
 searchCity("Denver");
-//Feature Three
+
+//Fahrenheit and Celsius
 
 function convertToFahrenheit(event) {
   event.preventDefault();
