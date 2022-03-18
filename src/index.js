@@ -45,11 +45,9 @@ currentDate.innerHTML = `${day}, ${month} ${date}, ${year} ${hour}:${minutes}`;
 
 //Weather Search / API Integration
 function displayWeather(response) {
-  console.log(response.data);
   document.querySelector("#currentCity").innerHTML = response.data.name;
-  document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  document.querySelector("#temperature").innerHTML =
+    Math.round(celsiusTemperature);
   let wind = Math.round(response.data.wind.speed);
   let windSpeed = document.querySelector("#wind");
   windSpeed.innerHTML = `Wind: ${wind} mph`;
@@ -69,10 +67,12 @@ function displayWeather(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  celsiusTemperature = response.data.main.temp;
 }
 function searchCity(city) {
   let apiKey = "9bb74b1dc4de007633995209b021f02e";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
 }
 
@@ -87,7 +87,7 @@ searchForm.addEventListener("submit", handleSubmit);
 
 function searchLocation(position) {
   let apiKey = "9bb74b1dc4de007633995209b021f02e";
-  let positionApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&&units=imperial`;
+  let positionApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&&units=metric`;
   axios.get(positionApiUrl).then(displayWeather);
 }
 
@@ -100,24 +100,27 @@ document
   .querySelector("#current-location-button")
   .addEventListener("click", getCurrentLocation);
 
-searchCity("Denver");
-
 //Fahrenheit and Celsius
 
 function convertToFahrenheit(event) {
   event.preventDefault();
-  let tempElement = document.querySelector("#temperature");
-  tempElement.innerHTML = 66;
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 function convertToCelsius(event) {
   event.preventDefault();
-  let tempElement = document.querySelector("#temperature");
-  tempElement.innerHTML = 19;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
+
+let celsiusTemperature = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
+
+searchCity("Denver");
