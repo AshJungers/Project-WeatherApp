@@ -104,7 +104,9 @@ div.box-2 {
   position: relative;
   top: -37px;
 }
-
+#weatherPic {
+  width: 90px;
+}
 .future {
   text-align: center;
   margin-top: 50px;
