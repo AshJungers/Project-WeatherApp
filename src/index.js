@@ -45,6 +45,7 @@ currentDate.innerHTML = `${day}, ${month} ${date}, ${year} ${hour}:${minutes}`;
 
 //Weather Search / API Integration
 function displayWeather(response) {
+  console.log(response.data);
   document.querySelector("#currentCity").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
@@ -61,6 +62,12 @@ function displayWeather(response) {
   let description = response.data.weather[0].main;
   let currentDescription = document.querySelector("#description");
   currentDescription.innerHTML = description;
+
+  let iconElement = document.querySelector("#weatherPic");
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 function searchCity(city) {
   let apiKey = "9bb74b1dc4de007633995209b021f02e";
