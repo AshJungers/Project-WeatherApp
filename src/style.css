@@ -83,6 +83,12 @@ div.box-2 {
 #description {
   text-transform: capitalize;
 }
+#wind {
+  color: #808080;
+}
+#humidity {
+  color: #808080;
+}
 .current-temp {
   display: inline;
   font-family: "Poppins", sans-serif;
