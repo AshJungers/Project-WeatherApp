@@ -20,8 +20,8 @@ p {
 
 #temperature {
   display: inline;
-  font-size: 70px;
-  padding-left: 5px;
+  font-size: 60px;
+  padding-left: 18px;
   padding-right: 5px;
 }
 
@@ -102,10 +102,10 @@ div.box-2 {
   font-weight: 400;
   font-size: small;
   position: relative;
-  top: -37px;
+  top: -30px;
 }
 #weatherPic {
-  width: 90px;
+  width: 100px;
 }
 .future {
   text-align: center;
