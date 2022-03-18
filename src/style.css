@@ -21,6 +21,8 @@ p {
 #temperature {
   display: inline;
   font-size: 70px;
+  padding-left: 5px;
+  padding-right: 10px;
 }
 
 #footer {
