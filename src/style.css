@@ -89,9 +89,10 @@ div.box-2 {
 .active {
   color: #180a0a;
   cursor: default;
-  text-decoration: none;
   font-size: medium;
+  text-decoration: none;
 }
+
 .active:hover {
   text-decoration: none;
   color: #180a0a;
