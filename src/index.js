@@ -43,7 +43,8 @@ let month = months[now.getMonth()];
 
 currentDate.innerHTML = `${day}, ${month} ${date}, ${year} ${hour}:${minutes}`;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = '<div class="row justify-content-evenly">';
@@ -74,6 +75,14 @@ function displayForecast() {
 }
 
 //Weather Search / API Integration
+function getForecast(coordinates) {
+  let apiKey = "9bb74b1dc4de007633995209b021f02e";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&
+  units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayWeather(response) {
   document.querySelector("#currentCity").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML =
@@ -97,6 +106,8 @@ function displayWeather(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 
   celsiusTemperature = response.data.main.temp;
 }
@@ -158,6 +169,5 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 searchCity("Denver");
-displayForecast();
 
 // code used to evenly distribute the rows <div class="row justify-content-evenly" id="forecast">
