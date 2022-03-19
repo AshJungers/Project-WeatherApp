@@ -52,16 +52,16 @@ div.box-2 {
 }
 
 #btn:hover {
-  background-color: #e9dac1;
+  background-color: #e2c2b9;
   color: #000;
 }
 #current-location-button {
-  background-color: #c3b091;
+  background-color: #f7ecde;
   margin-left: 15px;
 }
 
 #current-location-button:hover {
-  background-color: #e9dac1;
+  background-color: #e2c2b9;
 }
 #currentDate {
   font-family: "Poppins", sans-serif;
@@ -95,7 +95,7 @@ div.box-2 {
 
 .active:hover {
   text-decoration: none;
-  color: #180a0a;
+  color: #e2c2b9;
 }
 
 .current-temp {
@@ -148,7 +148,7 @@ div.box-2 {
 }
 
 .card-body:hover {
-  background-color: #e9dac1;
+  background-color: #e2c2b9;
 }
 .card-title {
   font-family: "Poppins", sans-serif;
