@@ -82,9 +82,6 @@ function handleSubmit(event) {
   searchCity(city);
 }
 
-let searchForm = document.querySelector("#searchform");
-searchForm.addEventListener("submit", handleSubmit);
-
 function searchLocation(position) {
   let apiKey = "9bb74b1dc4de007633995209b021f02e";
   let positionApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&&units=metric`;
@@ -120,6 +117,9 @@ function convertToCelsius(event) {
 }
 
 let celsiusTemperature = null;
+
+let searchForm = document.querySelector("#searchform");
+searchForm.addEventListener("submit", handleSubmit);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
