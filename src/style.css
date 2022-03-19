@@ -97,6 +97,9 @@ div.box-2 {
   text-decoration: none;
   color: #e2c2b9;
 }
+.lower {
+  opacity: 0.6;
+}
 
 .current-temp {
   display: inline;
