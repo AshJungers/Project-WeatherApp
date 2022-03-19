@@ -46,8 +46,8 @@ currentDate.innerHTML = `${day}, ${month} ${date}, ${year} ${hour}:${minutes}`;
 function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
 
-  let forecastHTML = '<div class="row">';
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  let forecastHTML = '<div class="row justify-content-evenly">';
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur"];
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
