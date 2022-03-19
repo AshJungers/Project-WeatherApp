@@ -43,6 +43,36 @@ let month = months[now.getMonth()];
 
 currentDate.innerHTML = `${day}, ${month} ${date}, ${year} ${hour}:${minutes}`;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = '<div class="row">';
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+       <div class="col-sm-2">
+         <div class="card">
+           <div class="card-body shadow">
+             <h5 class="card-title">${day}</h5>
+             <hr />
+             <img src="images/snow.png" alt="snow" class="snow-icon" />
+
+             <p class="card-text">
+               <span class="higher-temp">16°</span> |
+               <span class="lower-temp">0°</span>
+             </p>
+           </div>
+         </div>
+       </div>
+   `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 //Weather Search / API Integration
 function displayWeather(response) {
   document.querySelector("#currentCity").innerHTML = response.data.name;
@@ -128,3 +158,6 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 searchCity("Denver");
+displayForecast();
+
+// code used to evenly distribute the rows <div class="row justify-content-evenly" id="forecast">
