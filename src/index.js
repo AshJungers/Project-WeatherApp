@@ -75,10 +75,10 @@ function displayForecast(response) {
              <p class="card-text">
                <span class="higher-temp">${Math.round(
                  forecastDay.temp.max
-               )}°</span> |
+               )}° </span> |
                <span class="lower-temp">${Math.round(
                  forecastDay.temp.min
-               )}°</span>
+               )}° </span>
              </p>
            </div>
          </div>
@@ -100,6 +100,7 @@ function getForecast(coordinates) {
 }
 
 function displayWeather(response) {
+  let temperatureElement = document.querySelector("#temperature");
   let wind = Math.round(response.data.wind.speed);
   let windSpeed = document.querySelector("#wind");
   let humidity = response.data.main.humidity;
@@ -111,6 +112,9 @@ function displayWeather(response) {
   document.querySelector("#currentCity").innerHTML = response.data.name;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
 
+  fahrenheitTemperature = response.data.main.temp;
+
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
   windSpeed.innerHTML = `Wind: ${wind} mph`;
   currentHumidity.innerHTML = `Humidity: ${humidity}%`;
   currentDescription.innerHTML = description;
