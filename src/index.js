@@ -43,31 +43,48 @@ let month = months[now.getMonth()];
 
 currentDate.innerHTML = `${day}, ${month} ${date}, ${year} ${hour}:${minutes}`;
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = '<div class="row justify-content-evenly">';
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thur"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
        <div class="col-sm-2">
          <div class="card">
            <div class="card-body shadow">
-             <h5 class="card-title">${day}</h5>
+             <h5 class="card-title">${formatDay(forecastDay.dt)}</h5>
+             
              <hr />
-             <img src="images/snow.png" alt="snow" class="snow-icon" />
+             <img src="http://openweathermap.org/img/wn/${
+               forecastDay.weather[0].icon
+             }@2x.png" alt="" />
 
              <p class="card-text">
-               <span class="higher-temp">16°</span> |
-               <span class="lower-temp">0°</span>
+               <span class="higher-temp">${Math.round(
+                 forecastDay.temp.max
+               )}°</span> |
+               <span class="lower-temp">${Math.round(
+                 forecastDay.temp.min
+               )}°</span>
              </p>
            </div>
          </div>
        </div>
    `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -79,28 +96,27 @@ function getForecast(coordinates) {
   let apiKey = "9bb74b1dc4de007633995209b021f02e";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&
   units=metric`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
 
 function displayWeather(response) {
+  let wind = Math.round(response.data.wind.speed);
+  let windSpeed = document.querySelector("#wind");
+  let humidity = response.data.main.humidity;
+  let currentHumidity = document.querySelector("#humidity");
+  let description = response.data.weather[0].main;
+  let currentDescription = document.querySelector("#description");
+  let iconElement = document.querySelector("#weatherPic");
+
   document.querySelector("#currentCity").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML =
     Math.round(celsiusTemperature);
-  let wind = Math.round(response.data.wind.speed);
-  let windSpeed = document.querySelector("#wind");
-  windSpeed.innerHTML = `Wind: ${wind} mph`;
-
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  let humidity = response.data.main.humidity;
-  let currentHumidity = document.querySelector("#humidity");
-  currentHumidity.innerHTML = `Humidity: ${humidity}%`;
 
-  let description = response.data.weather[0].main;
-  let currentDescription = document.querySelector("#description");
+  windSpeed.innerHTML = `Wind: ${wind} mph`;
+  currentHumidity.innerHTML = `Humidity: ${humidity}%`;
   currentDescription.innerHTML = description;
 
-  let iconElement = document.querySelector("#weatherPic");
   iconElement.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -125,7 +141,7 @@ function handleSubmit(event) {
 
 function searchLocation(position) {
   let apiKey = "9bb74b1dc4de007633995209b021f02e";
-  let positionApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&&units=metric`;
+  let positionApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
   axios.get(positionApiUrl).then(displayWeather);
 }
 
