@@ -66,20 +66,21 @@ function displayForecast(response) {
          <div class="card">
            <div class="card-body shadow">
              <h5 class="card-title">${formatDay(forecastDay.dt)}</h5>
-             
+          
              <hr />
              <img src="http://openweathermap.org/img/wn/${
                forecastDay.weather[0].icon
              }@2x.png" alt="" />
-
+              <span class="weather-forecast-temperature">
              <p class="card-text">
-               <span class="higher-temp">${Math.round(
+               <span class="weather-forecast-temperature-max">${Math.round(
                  forecastDay.temp.max
                )}° </span> |
-               <span class="lower-temp">${Math.round(
+               <span class="weather-forecast-temperature-min">${Math.round(
                  forecastDay.temp.min
                )}° </span>
              </p>
+             </span>
            </div>
          </div>
        </div>
@@ -112,9 +113,7 @@ function displayWeather(response) {
   document.querySelector("#currentCity").innerHTML = response.data.name;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
 
-  fahrenheitTemperature = response.data.main.temp;
-
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
   windSpeed.innerHTML = `Wind: ${wind} mph`;
   currentHumidity.innerHTML = `Humidity: ${humidity}%`;
   currentDescription.innerHTML = description;
