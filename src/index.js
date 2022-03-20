@@ -156,5 +156,3 @@ let searchForm = document.querySelector("#searchform");
 searchForm.addEventListener("submit", handleSubmit);
 
 searchCity("Denver");
-
-// code used to evenly distribute the rows <div class="row justify-content-evenly" id="forecast">
