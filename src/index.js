@@ -68,7 +68,7 @@ function displayForecast(response) {
              <h5 class="card-title">${formatDay(forecastDay.dt)}</h5>
           
              <hr />
-             <img src="http://openweathermap.org/img/wn/${
+             <img src="https://openweathermap.org/img/wn/${
                forecastDay.weather[0].icon
              }@2x.png" alt="" />
               <span class="weather-forecast-temperature">
